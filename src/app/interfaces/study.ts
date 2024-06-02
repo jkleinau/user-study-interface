@@ -1,17 +1,17 @@
-interface study {
+export interface study {
     id: string;
     createdAt: Date;
     updatedAt: Date;
     submittedAt: Date;
-    ImageAnnotations: Map<string, ImageAnnotations>;
+    ImageAnnotations: Map<string, Annotation[]>;
 }
 
-interface ImageAnnotations {
+export interface Annotation {
     tool: string;
     points: Point[];
 }
 
-interface Point {
+export interface Point {
     x: number;
     y: number;
 }
