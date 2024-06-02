@@ -1,21 +1,29 @@
 // components/Wizard.tsx
 'use client'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { studyContext } from '@/app/interfaces/studyContext';
 
 interface WizardProps {
     steps: React.ReactNode[];
 }
 
 const Wizard: React.FC<WizardProps> = ({ steps }) => {
+    const [study, setStudy] = useContext(studyContext);
     const [currentStep, setCurrentStep] = useState(0);
 
     const nextStep = () => {
+        // setStudy(study)
         setCurrentStep((prevStep) => Math.min(prevStep + 1, steps.length - 1));
     };
 
     const prevStep = () => {
         setCurrentStep((prevStep) => Math.max(prevStep - 1, 0));
     };
+
+    const finish = () => {
+        study.submittedAt = new Date();
+        console.log(study);
+    }
 
     const progress = ((currentStep + 1) / steps.length) * 100; // Calculate progress percentage
 
@@ -42,8 +50,8 @@ const Wizard: React.FC<WizardProps> = ({ steps }) => {
                         Next
                     </button>
                 ) : (
-                    <button className='bg-gray-500 text-white font-bold py-2 px-4 rounded' disabled>
-                        Next
+                    <button className='bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded' onClick={finish}>
+                        Finish
                     </button>
                 )}
             </div>
