@@ -4,6 +4,7 @@ export interface study {
     updatedAt: Date;
     submittedAt: Date;
     ImageAnnotations: Map<string, Annotation[]>;
+    ImageSelection: Map<string, ImageSelection>;
 }
 
 export interface Annotation {
@@ -14,4 +15,8 @@ export interface Annotation {
 export interface Point {
     x: number;
     y: number;
+}
+
+export interface ImageSelection{
+    selection: number;
 }

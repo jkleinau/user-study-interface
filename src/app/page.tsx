@@ -6,11 +6,10 @@ import { useEffect, useState } from "react";
 import { studyContext } from "@/app/interfaces/studyContext";
 import { v4 as uuidv4 } from "uuid";
 import WelcomePage from "@/app/components/WelcomePage";
-import { Annotation, study } from "@/app/interfaces/study";
-import ImageSelector from "./components/ImageSelector";
+import { Annotation, study, ImageSelection } from "@/app/interfaces/study";
+import ImageSelector from "@/app/components/ImageSelector";
 
 export default function Home() {
-  const images = ['/test1.png', '/test2.png', '/test.jpg', '/LogoTU.png', '/test_imag.webp'];
 
 
 const [study, setStudy] = useState<study>( {
@@ -19,6 +18,7 @@ const [study, setStudy] = useState<study>( {
     updatedAt: new Date(),
     submittedAt: new Date(),
     ImageAnnotations:  new Map<string, Annotation[]>(),
+    ImageSelection: new Map<string, ImageSelection>()
 });
 
 
@@ -27,7 +27,7 @@ const [study, setStudy] = useState<study>( {
   const StepTwo = () => <ImageAnnotater imageUrl={'/test1.png'} prompt={""}  />;
   const StepThree = () => <ImageAnnotater imageUrl={'/test2.png'} prompt={""}  />;
  
-  const steps = [<WelcomePage key={1} />,<ImageSelector key={2} images={images} />, <StepTwo key='step2' />, <StepThree key='step3' />]; // Added key prop
+  const steps = [<WelcomePage key={1} />,<ImageSelector key={2} imageUrl={'/ImageSelector.jpeg'} />, <StepTwo key='step2' />, <StepThree key='step3' />]; // Added key prop
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
