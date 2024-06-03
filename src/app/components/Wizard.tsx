@@ -2,6 +2,9 @@
 'use client'
 import { useContext, useState } from 'react';
 import { studyContext } from '@/app/interfaces/studyContext';
+import LoadingModal from '@/app/components/LoadingModal';
+import { useRouter } from 'next/navigation';
+
 
 interface WizardProps {
     steps: React.ReactNode[];
@@ -10,6 +13,10 @@ interface WizardProps {
 const Wizard: React.FC<WizardProps> = ({ steps }) => {
     const [study, setStudy] = useContext(studyContext);
     const [currentStep, setCurrentStep] = useState(0);
+    const [showModal, setShowModal] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const router = useRouter();
 
     const nextStep = () => {
         // setStudy(study)
@@ -22,7 +29,36 @@ const Wizard: React.FC<WizardProps> = ({ steps }) => {
 
     const finish = () => {
         study.submittedAt = new Date();
-        console.log(study);
+        setIsLoading(true);
+        setShowModal(true);
+
+        // console.log(study);
+
+        const studyData = {
+            ...study,
+            ImageAnnotations: Object.fromEntries(study.ImageAnnotations),
+            ImageSelection: Object.fromEntries(study.ImageSelection),
+        };
+
+        fetch('http://localhost:3000/api', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(studyData),
+        }).then((response) => {
+            if(response.ok){
+                setSuccess(true);
+                setIsLoading(false);
+            }else{
+                setSuccess(false);
+                setIsLoading(false);
+            }
+        }).catch((error) => {
+            setIsLoading(false);
+            setSuccess(false);
+            console.error('Error:', error);
+        })
     }
 
     const progress = ((currentStep + 1) / steps.length) * 100; // Calculate progress percentage
@@ -55,6 +91,9 @@ const Wizard: React.FC<WizardProps> = ({ steps }) => {
                     </button>
                 )}
             </div>
+            {showModal && (
+                <LoadingModal loadingText={'Thank you for Participating'} isLoading={isLoading} success={success} onPrimaryAction={()=>{router.refresh()}} primaryButtonText={'Ok'} />
+            )}
         </div>
     );
 };
