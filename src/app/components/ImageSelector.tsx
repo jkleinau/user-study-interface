@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { studyContext } from '@/app/interfaces/studyContext';
+import { study } from '@/app/interfaces/study';
 
 interface ImageSelectorProps {
   imageUrl: string; // Array of image URLs
@@ -8,7 +9,7 @@ interface ImageSelectorProps {
 
 const ImageSelector: React.FC<ImageSelectorProps> = ({ imageUrl }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [study, setStudy] = useContext(studyContext);
+  const [study, setStudy] = useContext<[study,React.Dispatch<any>]>(studyContext);
   const [barPosition, setBarPosition] = useState(0); // New state for bar position
   
   const getBarPositionInPx = () => {
@@ -16,11 +17,38 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({ imageUrl }) => {
     return Math.min(barPosition * step);
 
   }
+  const moveBar= (direction: string)=>{
+    switch(direction){
+        case 'left':
+            const leftPositon = Math.max(0, barPosition-1);
+            study.ImageSelection.set(imageUrl, {selection: leftPositon})
+            setBarPosition(leftPositon)
+            break;
+        case 'right':
+            const rightPosition = Math.min(barPosition+1, 5);
+            study.ImageSelection.set(imageUrl, {selection: rightPosition})
+            setBarPosition(rightPosition)
+            break;
+    }
 
-  const dimensions = {
+
+  }
+
+    useEffect(() => {
+        if(study.ImageSelection.get(imageUrl) === undefined){
+            study.ImageSelection.set(imageUrl, {selection: 0})
+        }else{
+            const selection = study.ImageSelection.get(imageUrl)?.selection; // Add null check
+            if (selection !== undefined) {
+                setBarPosition(selection);
+            }
+        }
+    })
+
+const dimensions = {
     width: 1280,
     height: 256
-  };
+};
 
   return (
     <div className=' bg-white p-8 rounded-lg shadow-lg '>
@@ -42,11 +70,11 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({ imageUrl }) => {
       </div>
         <div className='flex justify-evenly'>
             <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2' onClick={()=>
-                setBarPosition(Math.max(0, barPosition-1))
+                moveBar('left')
                 }>
                 <Image src={'/previous.svg'} width={20} height={20} alt='previous' />
             </button>
-            <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2' onClick={()=>setBarPosition(Math.min(barPosition+1, 5))}>
+            <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2' onClick={()=>moveBar('right')}>
                 <Image src={'/next.svg'} width={20} height={20} alt='Next' />
             </button>
 
