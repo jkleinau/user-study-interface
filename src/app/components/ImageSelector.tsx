@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { studyContext } from '@/app/interfaces/studyContext';
 import { study } from '@/app/interfaces/study';
 
 interface ImageSelectorProps {
-  imageUrl: string; // Array of image URLs
+  imageUrl: StaticImageData; // Array of image URLs
 }
 
 const ImageSelector: React.FC<ImageSelectorProps> = ({ imageUrl }) => {
@@ -21,12 +21,12 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({ imageUrl }) => {
     switch(direction){
         case 'left':
             const leftPositon = Math.max(0, barPosition-1);
-            study.ImageSelection.set(imageUrl, {selection: leftPositon})
+            study.ImageSelection.set(imageUrl.src, {selection: leftPositon})
             setBarPosition(leftPositon)
             break;
         case 'right':
             const rightPosition = Math.min(barPosition+1, 5);
-            study.ImageSelection.set(imageUrl, {selection: rightPosition})
+            study.ImageSelection.set(imageUrl.src, {selection: rightPosition})
             setBarPosition(rightPosition)
             break;
     }
@@ -35,10 +35,10 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({ imageUrl }) => {
   }
 
     useEffect(() => {
-        if(study.ImageSelection.get(imageUrl) === undefined){
-            study.ImageSelection.set(imageUrl, {selection: 0})
+        if(study.ImageSelection.get(imageUrl.src) === undefined){
+            study.ImageSelection.set(imageUrl.src, {selection: 0})
         }else{
-            const selection = study.ImageSelection.get(imageUrl)?.selection; // Add null check
+            const selection = study.ImageSelection.get(imageUrl.src)?.selection; // Add null check
             if (selection !== undefined) {
                 setBarPosition(selection);
             }

@@ -1,13 +1,13 @@
 // components/ImageAnnotator.tsx
 'use client'
 import React, { useRef, useState, useEffect, MouseEvent, useContext } from 'react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { Annotation, study, Point } from '@/app/interfaces/study';
 import { studyContext } from '@/app/interfaces/studyContext';
 
 
 interface ImageAnnotatorProps {
-    imageUrl: string;
+    imageUrl: StaticImageData;
     prompt: string;
 }
 
@@ -27,7 +27,7 @@ const ImageAnnotator: React.FC<ImageAnnotatorProps> = ({ imageUrl, prompt }) => 
         // const updatedStudy:study = { ...study };
         // get the currently edited Annotation from
         annotations[curr] = updatedAnnotation;
-        study.ImageAnnotations.set(imageUrl, annotations);
+        study.ImageAnnotations.set(imageUrl.src, annotations);
         // setStudy(updatedStudy);
         setCurrentAnnotation(updatedAnnotation);
         // console.log(updatedAnnotation);
@@ -45,16 +45,16 @@ const ImageAnnotator: React.FC<ImageAnnotatorProps> = ({ imageUrl, prompt }) => 
         setAnnotations([]);
         setCurr(0)
         // const updatedStudy = { ...study }
-        study.ImageAnnotations.delete(imageUrl);
+        study.ImageAnnotations.delete(imageUrl.src);
     }
 
     const toolChange = (tool: 'Add' | 'Remove' | 'Change') => {
         setCurrentTool(tool);
         const updatedStudy:study = { ...study };
         annotations[curr] = {tool: tool, points: currentAnnotation.points};
-        study.ImageAnnotations.set(imageUrl, annotations);
+        study.ImageAnnotations.set(imageUrl.src, annotations);
         setCurrentAnnotation({tool: tool, points: currentAnnotation.points});
-        // console.log(updatedStudy.ImageAnnotations.get(imageUrl));
+        // console.log(updatedStudy.ImageAnnotations.get(imageUrl.src));
     }
 
     useEffect(() => {
@@ -67,13 +67,14 @@ const ImageAnnotator: React.FC<ImageAnnotatorProps> = ({ imageUrl, prompt }) => 
 
       context.clearRect(0, 0, canvas.width, canvas.height);
       canvas.style.backgroundColor = 'transparent';
-      if (study.ImageAnnotations.has(imageUrl)) {
-        setCurrentTool(study.ImageAnnotations.get(imageUrl)[0]?.tool as 'Add' | 'Remove' | 'Change');
-        setAnnotations(study.ImageAnnotations.get(imageUrl));
-        setCurrentAnnotation(study.ImageAnnotations.get(imageUrl)[0]);
+      const annotation = study.ImageAnnotations.get(imageUrl.src);
+      if (annotation) {
+        setCurrentTool(annotation[0].tool as 'Add' | 'Remove' | 'Change');
+        setAnnotations(annotation);
+        setCurrentAnnotation(annotation[0]);
       }
 
-    }, [study.ImageAnnotations, imageUrl]);
+    }, [study.ImageAnnotations, imageUrl.src]);
     
     useEffect(() => {
         // console.log('second useEffect')
@@ -113,7 +114,7 @@ const ImageAnnotator: React.FC<ImageAnnotatorProps> = ({ imageUrl, prompt }) => 
         }
         // console.log(annotations)
 
-    }, [annotations, currentAnnotation, imageUrl, currentTool]);
+    }, [annotations, currentAnnotation, imageUrl.src, currentTool]);
 
     const dimensions = { width: 512, height: 512 };
 

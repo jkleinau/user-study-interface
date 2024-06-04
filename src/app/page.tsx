@@ -8,6 +8,9 @@ import { v4 as uuidv4 } from "uuid";
 import WelcomePage from "@/app/components/WelcomePage";
 import { Annotation, study, ImageSelection } from "@/app/interfaces/study";
 import ImageSelector from "@/app/components/ImageSelector";
+import Test1 from '/public/test1.png';
+import Test2 from '/public/test1.png';
+import ImageSelectorTest from '../../public/ImageSelector.jpeg';
 
 export default function Home() {
 
@@ -24,10 +27,10 @@ const [study, setStudy] = useState<study>( {
 
 
   
-  const StepTwo = () => <ImageAnnotater imageUrl={'/test1.png'} prompt={""}  />;
-  const StepThree = () => <ImageAnnotater imageUrl={'/test2.png'} prompt={""}  />;
+  const StepTwo = () => <ImageAnnotater imageUrl={Test1} prompt={""}  />;
+  const StepThree = () => <ImageAnnotater imageUrl={Test2} prompt={""}  />;
  
-  const steps = [<WelcomePage key={1} />,<ImageSelector key={2} imageUrl={'/ImageSelector.jpeg'} />, <StepTwo key='step2' />, <StepThree key='step3' />]; // Added key prop
+  const steps = [<WelcomePage key={1} />, <ImageSelector key={2} imageUrl={ImageSelectorTest} />, <StepTwo key='step2' />, <StepThree key='step3' />]; // Added key prop
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">

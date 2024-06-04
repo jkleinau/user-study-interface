@@ -92,7 +92,7 @@ const Wizard: React.FC<WizardProps> = ({ steps }) => {
                 )}
             </div>
             {showModal && (
-                <LoadingModal loadingText={'Thank you for Participating'} isLoading={isLoading} success={success} onPrimaryAction={()=>{router.refresh()}} primaryButtonText={'Ok'} />
+                <LoadingModal loadingText={'Thank you for Participating'} isLoading={isLoading} success={success} onPrimaryAction={()=>{router.push('/EndPage')}} primaryButtonText={'Ok'} />
             )}
         </div>
     );
