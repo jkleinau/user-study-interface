@@ -2,11 +2,14 @@ import React from 'react';
 import Image from 'next/image';
 const WelcomePage: React.FC = () => {
   return (
-    <div className='bg-white p-8 rounded-lg shadow-lg max-w-2xl'>
-      <Image src={'/LogoTU.png'} alt={'TU Log'} width={150} height={75} className='ml-auto mb-4' />
-      <h1 className='text-2xl font-bold text-gray-800 mb-4'>
+    <div className='mt-10 max-w-2xl h-full'>
+      <div className='flex mb-4 items-center'>
+
+      <h1 className='text-2xl font-bold text-gray-800 '>
         Welcome to Our Study on Visual Counterfactual Explanations!
       </h1>
+      <Image src={'/LogoTU.png'} alt={'TU Log'} width={150} height={75} className='ml-auto mb-4' />
+      </div>
       <p className='text-gray-700 mb-4'>
         Thank you for participating in our study! We are a group of Master students from the Technical University of
         Berlin (TU Berlin) conducting research on visual counterfactual explanations. Our goal is to understand how

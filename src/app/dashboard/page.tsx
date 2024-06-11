@@ -28,6 +28,89 @@ export default function Dashboard() {
       field: 'submittedAt',
       cellDataType: 'dateString',
       valueFormatter: (params) => new Date(params.value).toLocaleDateString()
+    },
+    {
+      headerName: 'Selections',
+      //@ts-expect-error - TS complains about the children property
+      children: [
+        {
+          columnGrupShow: 'closed', field: 'Average', cellDataType: 'number', valueGetter: (p: { data: { ImageSelection: { [s: string]: { selection: number; }; } | ArrayLike<{ selection: number; }>; }; }) => {
+          const selections: { selection: number }[] = Object.values(p.data.ImageSelection);
+          return selections.reduce((sum, obj:{selection:number}) => sum + obj.selection, 0) / selections.length;
+        },
+        valueFormatter: (params: { value: number; }) => params.value.toFixed(2),
+      },
+      {
+        field: 'ImageSelection.27300.selection',
+        headerName: '27300',
+        columnGroupShow: 'open',
+      },
+      {
+        field: 'ImageSelection.27398.selection',
+        headerName: '27398',
+        columnGroupShow: 'open',
+      },{
+        field: 'ImageSelection.27591.selection',
+        headerName: '27591',
+        columnGroupShow: 'open',
+      },{
+        field: 'ImageSelection.27931.selection',
+        headerName: '27931',
+        columnGroupShow: 'open',
+      },{
+        field: 'ImageSelection.28113.selection',
+        headerName: '28113',
+        columnGroupShow: 'open',
+      },{
+        field: 'ImageSelection.28125.selection',
+        headerName: '28125',
+        columnGroupShow: 'open',
+      },{
+        field: 'ImageSelection.28285.selection',
+        headerName: '28285',
+        columnGroupShow: 'open',
+      },{
+        field: 'ImageSelection.28362.selection',
+        headerName: '28362',
+        columnGroupShow: 'open',
+      },{
+        field: 'ImageSelection.28383.selection',
+        headerName: '28383',
+        columnGroupShow: 'open',
+      },{
+        field: 'ImageSelection.28583.selection',
+        headerName: '28583',
+        columnGroupShow: 'open',
+      },{
+        field: 'ImageSelection.28782.selection',
+        headerName: '28782',
+        columnGroupShow: 'open',
+      },{
+        field: 'ImageSelection.28892.selection',
+        headerName: '28892',
+        columnGroupShow: 'open',
+      },{
+        field: 'ImageSelection.29058.selection',
+        headerName: '29058',
+        columnGroupShow: 'open',
+      },{
+        field: 'ImageSelection.29188.selection',
+        headerName: '29188',
+        columnGroupShow: 'open',
+      },{
+        field: 'ImageSelection.29408.selection',
+        headerName: '29408',
+        columnGroupShow: 'open',
+      },{
+        field: 'ImageSelection.29527.selection',
+        headerName: '29527',
+        columnGroupShow: 'open',
+      },{
+        field: 'ImageSelection.29762.selection',
+        headerName: '29762',
+        columnGroupShow: 'open',
+      },
+      ]
     }
   ];
   const gridOptions: GridOptions = {
