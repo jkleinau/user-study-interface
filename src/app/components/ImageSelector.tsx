@@ -57,9 +57,9 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({ imageId, numImages }) => 
   };
 
   return (
-    <div className=' bg-white p-8 rounded-lg  w-full '>
+    <div className=' bg-white p-8 rounded-lg  w-full dark:text-black '>
       <h1 className='text-2xl font-bold text-gray-800 mb-8 text-center'>
-        Select an Image that satisfies the requirement:{' '}
+        Select the first Image that satisfies the requirement:{' '}
         <span className='text-blue-500  outline-2 outline-offset-4 ml-2 outline-black'>Smiling</span>
       </h1>
       <div className={` w-full flex space-x-1 justify-center`}>

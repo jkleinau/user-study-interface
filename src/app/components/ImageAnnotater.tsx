@@ -123,8 +123,9 @@ const ImageAnnotator: React.FC<ImageAnnotatorProps> = ({ imageUrl, prompt }) => 
   const dimensions = { width: 512, height: 512 };
 
   return (
-    <div className='flex p-4 rounded-lg bg-slate-300 shadow-lg space-x-2 h-full border-2 border-blue-800 items-center justify-center'>
-      <div className=' h-full '>
+    <div className='flex-row p-4 rounded-lg dark:text-black  items-center justify-center'>
+      <h1 className='text-2xl mb-4 font-bold'>Mark the areas in the Image that need to be changed</h1>
+      <div className='h-full p-4 bg-slate-300 shadow-lg border-2 border-blue-800'>
         <div className={`relative w-[${dimensions.width}px] h-[${dimensions.width}px] cursor-crosshair border-2 `}>
           <canvas
             ref={canvasRef}
@@ -157,7 +158,7 @@ const ImageAnnotator: React.FC<ImageAnnotatorProps> = ({ imageUrl, prompt }) => 
         </div>
       </div>
 
-      <div className='w-[512px] h-full'>
+      {/* <div className='w-[512px] h-full'>
         <div className='bg-slate-300 p-4 rounded-lg shadow-lg mb-2'>
           <h1 className='text-2xl underline mb-2'>Task</h1>
           <p className='text-wrap'>Mark the areas in the Image that need to be changed, in order for the Image to be classified as <span className='font-bold'>Smiling</span></p>
@@ -176,9 +177,8 @@ const ImageAnnotator: React.FC<ImageAnnotatorProps> = ({ imageUrl, prompt }) => 
               </tr>
             </tbody>
           </table>
-          {/* <p>Soll: Smiling  Ist: not Smiling</p> */}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

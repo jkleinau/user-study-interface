@@ -34,6 +34,7 @@ import Image21 from '/public/annotations/29762_1.0_misclassified.png';
 
 
 import InstructionsAnnotations from '@/app/components/InstructionsAnnotations';
+import SelectionToolExplanationPage from './components/InstructionsSelection';
 
 export default function Home() {
   const [study, setStudy] = useState<study>({
@@ -47,7 +48,7 @@ export default function Home() {
 
   const steps = [
     <WelcomePage key={1} />,
-    <InstructionsAnnotations key={2} />,
+    <SelectionToolExplanationPage key={2} />,
     <ImageSelector key={2} numImages={6} imageId={'27300'} />,
     <ImageSelector key={2} numImages={6} imageId={'27398'} />,
     <ImageSelector key={2} numImages={6} imageId={'27591'} />,
@@ -65,6 +66,7 @@ export default function Home() {
     <ImageSelector key={2} numImages={7} imageId={'29408'} />,
     <ImageSelector key={2} numImages={5} imageId={'29527'} />,
     <ImageSelector key={2} numImages={4} imageId={'29762'} />,
+    <InstructionsAnnotations key={2} />,
     <ImageAnnotater key={3} imageUrl={Image1} prompt={''} />,
     <ImageAnnotater key={3} imageUrl={Image2} prompt={''} />,
     <ImageAnnotater key={3} imageUrl={Image3} prompt={''} />,
@@ -89,7 +91,7 @@ export default function Home() {
   ]; // Added key prop
 
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24 bg-gray-300'>
+    <main className='flex min-h-screen flex-col items-center justify-between p-20 bg-gray-300'>
       {/* <ImageAnnotater imageUrl={'/test_imag.webp'}  /> */}
       {/* <h1 className="text-3xl m-4">Visual Conterfactual Explanations</h1> */}
       <studyContext.Provider value={[study, setStudy]}>

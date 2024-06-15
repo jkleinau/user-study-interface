@@ -1,10 +1,10 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { study } from '../interfaces/study';
+import { Annotation, study } from '../interfaces/study';
 import { AgGridReact } from 'ag-grid-react'; // React Data Grid Component
 import 'ag-grid-community/styles/ag-grid.css'; // Mandatory CSS required by the grid
 import 'ag-grid-community/styles/ag-theme-quartz.css'; // Optional Theme applied to the grid
-import { type ColDef, type GridOptions } from 'ag-grid-community';
+import { type ColDef, type GridOptions, type ValueGetterParams } from 'ag-grid-community';
 
 export default function Dashboard() {
   const [rowData, setRowData] = useState<study[]>([]);
@@ -109,6 +109,20 @@ export default function Dashboard() {
         field: 'ImageSelection.29762.selection',
         headerName: '29762',
         columnGroupShow: 'open',
+      },
+      ]
+    },
+    {
+      headerName: 'Annotations',
+      //@ts-expect-error - TS complains about the children property
+      children: [
+        {
+          columnGrupShow: 'closed', field: 'Amount of Polygons', cellDataType: 'number', 
+          valueGetter: (p:ValueGetterParams) => {
+            const polygons: Annotation[][] = Object.values(p.data.ImageAnnotations);
+            return polygons.reduce((sum, obj:Annotation[]) => sum + obj.length, 0);
+          },
+        // valueFormatter: (params: { value: number; }) => params.value.toFixed(2),
       },
       ]
     }

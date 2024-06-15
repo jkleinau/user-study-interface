@@ -6,7 +6,7 @@ const WelcomePage: React.FC = () => {
       <div className='flex mb-4 items-center'>
 
       <h1 className='text-2xl font-bold text-gray-800 '>
-        Welcome to Our Study on Visual Counterfactual Explanations!
+        Welcome to our Study on Visual Counterfactual Explanations!
       </h1>
       <Image src={'/LogoTU.png'} alt={'TU Log'} width={150} height={75} className='ml-auto mb-4' />
       </div>
