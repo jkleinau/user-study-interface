@@ -18,16 +18,12 @@ import Image5 from '/public/annotations/27931_1.0_misclassified.png';
 import Image6 from '/public/annotations/28113_1.0_misclassified.png';
 import Image7 from '/public/annotations/28125_1.0_misclassified.png';
 import Image8 from '/public/annotations/28285_1.0_misclassified.png';
-import Image9 from '/public/annotations/28354_1.0_misclassified.png';
 import Image10 from '/public/annotations/28355_1.0_misclassified.png';
-import Image11 from '/public/annotations/28362_1.0_misclassified.png';
 import Image12 from '/public/annotations/28383_1.0_misclassified.png';
 import Image13 from '/public/annotations/28583_1.0_misclassified.png';
-import Image14 from '/public/annotations/28670_1.0_misclassified.png';
 import Image15 from '/public/annotations/28782_1.0_misclassified.png';
 import Image16 from '/public/annotations/28892_1.0_misclassified.png';
 import Image17 from '/public/annotations/29058_1.0_misclassified.png';
-import Image18 from '/public/annotations/29188_1.0_misclassified.png';
 import Image19 from '/public/annotations/29408_1.0_misclassified.png';
 import Image20 from '/public/annotations/29527_1.0_misclassified.png';
 import Image21 from '/public/annotations/29762_1.0_misclassified.png';
@@ -45,6 +41,10 @@ export default function Home() {
     ImageAnnotations: new Map<string, Annotation[]>(),
     ImageSelection: new Map<string, ImageSelection>()
   });
+  
+
+
+
 
   const steps = [
     <WelcomePage key={1} />,
@@ -75,16 +75,12 @@ export default function Home() {
     <ImageAnnotater key={3} imageUrl={Image6} prompt={''} />,
     <ImageAnnotater key={3} imageUrl={Image7} prompt={''} />,
     <ImageAnnotater key={3} imageUrl={Image8} prompt={''} />,
-    <ImageAnnotater key={3} imageUrl={Image9} prompt={''} />,
     <ImageAnnotater key={3} imageUrl={Image10} prompt={''} />,
-    <ImageAnnotater key={3} imageUrl={Image11} prompt={''} />,
     <ImageAnnotater key={3} imageUrl={Image12} prompt={''} />,
     <ImageAnnotater key={3} imageUrl={Image13} prompt={''} />,
-    <ImageAnnotater key={3} imageUrl={Image14} prompt={''} />,
     <ImageAnnotater key={3} imageUrl={Image15} prompt={''} />,
     <ImageAnnotater key={3} imageUrl={Image16} prompt={''} />,
     <ImageAnnotater key={3} imageUrl={Image17} prompt={''} />,
-    <ImageAnnotater key={3} imageUrl={Image18} prompt={''} />,
     <ImageAnnotater key={3} imageUrl={Image19} prompt={''} />,
     <ImageAnnotater key={3} imageUrl={Image20} prompt={''} />,
     <ImageAnnotater key={3} imageUrl={Image21} prompt={''} />,

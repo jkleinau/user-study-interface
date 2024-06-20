@@ -16,8 +16,9 @@ const WelcomePage: React.FC = () => {
         human-generated visual counterfactuals compare to those produced by machine learning models.
       </p>
       <p className='text-gray-700 mb-4'>
-        In this study, you will be presented with images that have been misclassified by a machine learning model. Your
-        task is to generate visual counterfactual explanations that could help correct the misclassification. This will help
+        This study consists of two tasks: image selection and image annotation. In the image selection task, you will be
+        asked to choose the image that requires the least amount of change to satisfy a specific criterion. In the image
+        annotation task, you will be required to draw polygons on specific areas of the image. This will help
         us gain insights into the differences between human and machine approaches to generating counterfactual
         explanations.
       </p>
@@ -30,6 +31,9 @@ const WelcomePage: React.FC = () => {
         have any questions, feel free to reach out to us at any time.
       </p>
       <p className='text-gray-700'>Thank you once again for your valuable contribution to our study!</p>
+
+      <p className='text-gray-700 mt-2 '>If you have any questions, please contact us at: <span className='font-bold'>cederic.assmann@campus.tu-berlin.de</span></p>
+
     
     </div>
   );

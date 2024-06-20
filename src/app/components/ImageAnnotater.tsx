@@ -124,9 +124,9 @@ const ImageAnnotator: React.FC<ImageAnnotatorProps> = ({ imageUrl, prompt }) => 
 
   return (
     <div className='flex-row p-4 rounded-lg dark:text-black  items-center justify-center'>
-      <h1 className='text-2xl mb-4 font-bold'>Mark the areas in the Image that need to be changed</h1>
-      <div className='h-full p-4 bg-slate-300 shadow-lg border-2 border-blue-800'>
-        <div className={`relative w-[${dimensions.width}px] h-[${dimensions.width}px] cursor-crosshair border-2 `}>
+      <h1 className='text-2xl mb-16 font-bold text-wrap max-w-2xl'>Mark the areas in the Image that need to be changed, so that the person is <span className='text-blue-500'>SMILING</span></h1>
+      <div className='rounded flex items-center justify-center'>
+        <div className={`relative w-[${dimensions.width}px] h-[${dimensions.width}px] cursor-crosshair border-2  rounded`}>
           <canvas
             ref={canvasRef}
             width={dimensions.width}
@@ -135,50 +135,32 @@ const ImageAnnotator: React.FC<ImageAnnotatorProps> = ({ imageUrl, prompt }) => 
             className='absolute top-0 left-0'
           />
           <Image
-            className=''
+            className=' rounded'
             src={imageUrl}
             alt={'Image to be anntoated'}
             width={dimensions.width}
             height={dimensions.height}
           />
-          <div className='absolute right-0 top-1/2 transform -translate-y-1/2 space-y-2 p-2 bg-white shadow-lg'>
-            <Image onClick={undo} src='/undo.svg' alt='Undo' width={24} height={24} />
-            {/* <Image className={currentTool === 'Add' ? 'stroke-blue-500 stroke-2': ''} onClick={()=>toolChange('Add')} src='/add.svg' alt='Undo' width={24} height={24} title='Markiere Bereiche wo etwas hinzugefügt werden soll' />
-                        <Image className={currentTool === 'Remove' ? 'stroke-blue-500 stroke-2': ''} onClick={()=>toolChange('Remove')} src='/remove.svg' alt='Undo' width={24} height={24} title='Markiere Bereiche, wo etwas entfernt werden muss' />
-                        <Image className={currentTool === 'Change' ? 'stroke-blue-500 stroke-2': ''} onClick={()=>toolChange('Change')} src='/important.svg' alt='Undo' width={24} height={24} title='Markiere Bereiche die relevant sind' /> */}
+          <div className='absolute right-0 top-1/2 transform -translate-y-1/2 space-y-2 p-1 bg-white shadow-lg rounded-l-md cursor-pointer'>
+            <div className='bg-blue-200 hover:bg-blue-300 rounded-full p-2'>
+              <Image onClick={undo} src='/undo.svg' alt='Undo' width={20} height={20} />
+            </div>
+            <div className='bg-blue-200 hover:bg-blue-300 rounded-full p-2'>
+
             <Image
               onClick={() => finishPolygon()}
               src='/enter.svg'
               alt='Undo'
-              width={24}
-              height={24}
+              width={20}
+              height={20}
               title='Markiere Bereiche die relevant sind'
             />
+            </div>
           </div>
         </div>
       </div>
 
-      {/* <div className='w-[512px] h-full'>
-        <div className='bg-slate-300 p-4 rounded-lg shadow-lg mb-2'>
-          <h1 className='text-2xl underline mb-2'>Task</h1>
-          <p className='text-wrap'>Mark the areas in the Image that need to be changed, in order for the Image to be classified as <span className='font-bold'>Smiling</span></p>
-        </div>
-        <div className='bg-slate-300 p-4 rounded-lg shadow-lg mb-2'>
-          <h1 className='text-2xl underline mb-2'>Klassifizierung</h1>
-          <table className='w-full'>
-            <tbody>
-              <tr className=''>
-                <td className='font-bold'>Soll</td>
-                <td className=''>Smiling</td>
-              </tr>
-              <tr className=''>
-                <td className='font-bold'>Ist</td>
-                <td>Not Smiling</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div> */}
+    
     </div>
   );
 };

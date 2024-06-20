@@ -13,7 +13,7 @@ const SelectionToolExplanationPage: React.FC = () => {
         </li>
       </ol>
       <p className="mb-4">
-        It is important that you choose the image which shows the <span className="font-bold underline">minimum change</span> from the first image that still meets the smiling criteria.
+        It is important that you choose the image which shows the <span className="font-bold underline">minimum change</span> from the first image that meets the smiling criteria.
       </p>
       <p className="mb-4">Please take your time to carefully observe each image and make your selection.</p>
       <p className="mb-4">When you are ready, click the &quot;Next&quot; button below to begin.</p>
