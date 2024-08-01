@@ -1,27 +1,44 @@
-import React from 'react';
-import Image from 'next/image';
-import ExplanationGIF from '/public/explanationtask.gif'
+import React, { useState } from 'react'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
+import ImageBefore from '/public/sequences/27300/0.png'
+import ImageAfter from '/public/sequences/27300/3.png'
 
-export default function InstructionsAnnotations(){
+export default function InstructionsAnnotations() {
+  const [showAfterImage, setShowAfterImage] = useState(false);
 
-    return (
-        <div className="flex selection:h-full mt-10 dark:text-black">
-            <div className='max-w-2xl'>
-                <h1 className="text-2xl font-bold mb-4">Image Annotation Tool Instructions</h1>
-                <p className="mb-4">Welcome to the image annotation task. In this task you will be asked to mark <span className='font-bold'>all the areas</span> in the image, that need to changed in your <span className='font-bold'>opinion</span> to satisfy the requirement smiling. It is also valid to not mark any areas. Here is how you can use the tool:</p>
-                <ol className="list-decimal list-inside mb-4">
-                    <li className="mb-2">Click on the image to start drawing a polygon. Each click will add a point to the current polygon.</li>
-                    <li className="mb-2">
-                        Once you have added all the points for a polygon, click the<Image className='inline-block m-1' src={'/enter.svg'} width={20} height={20} alt={''} /> button. This will complete the current polygon.
-                    </li>
-                    <li className="mb-2">To start drawing an <span className='font-bold underline'>additional</span> polygon, simply click on the image again after finishing the previous one.</li>
-                    <li className="mb-2">You can use the reset button <Image className='inline-block' src={'/undo.svg'} width={20} height={20} alt={''} /> to reset the annotations if needed.</li>
-                </ol>
-                <p className="mb-4 font-serif">Hint: Watch the GIF on your right for a tutorial.</p>
-                <p className="mb-4">Make sure to complete the annotation for all necessary parts of the image.</p>
-                <p className="mb-4">When you are ready, click the &quot;next&quot; button below to begin.</p>
-            </div>
-            <Image src={ExplanationGIF} alt="Annotation Instructions" width={600} height={300} />
-        </div>
-    );
+  const handleButtonClick = () => {
+    setShowAfterImage(true);
+  };
+
+  return (
+    <div className='selection:h-full mt-10 dark:text-black'>
+      <h1 className='text-xl mb-16 text-wrap max-w-2xl'>
+        Sie können nun vergleichen, ob Sie dieselbe Vorstellung vom Konzept „<span className='font-bold'>Lächeln</span>“ haben wie das KI-Modell. Klicken
+        Sie auf die roten Knopf, um die kontrafaktische Erklärung der XAI-Methode zu erzeugen, die die Klassifizierung
+        des Modells in „<span className='font-bold'>Lächeln</span>“ ändert.
+      </h1>
+
+      <div className='grid grid-cols-3 my-auto space-x-2'>
+        <Image src={ImageBefore} alt='Image Before' />
+        <button
+          className='bg-[#e58253] border border-1 border-[#965335] text-white p-4 rounded-full'
+          onClick={handleButtonClick}
+        >
+          Generate Counterfactual
+        </button>
+        {showAfterImage ? (
+          <motion.div
+            initial={{ opacity: 0,  filter: 'blur(20px)' }}
+            animate={{ opacity: 1,  filter: 'blur(0px)'}}
+            transition={{ duration: 1 }}
+          >
+            <Image src={ImageAfter} alt='Image After' />
+          </motion.div>
+        ) : (
+          <div style={{ width: '100%', height: '100%' }}></div> // Placeholder to maintain grid structure
+        )}
+      </div>
+    </div>
+  )
 }
