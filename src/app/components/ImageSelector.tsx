@@ -44,7 +44,7 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({ imageId, numImages }) => 
 
   return (
     <div className='flex p-8 rounded-lg  w-full dark:text-black items-center justify-center flex-col'>
-      <h1 className='text-xl  mb-16 text-center'>
+      <h1 className='text-xl  mb-16 text-center text-goKiPrimary'>
         Diese Bilderreihe zeigt ganz links das Originalbild. Die Bilder rechts davon sind AI generierte Bilder, in denen
         das Merkmal “<span className='font-bold'>Lächeln</span>” stufenweise intensiviert wurde. Wählen Sie, das von
         links aus, erste Bild in dem die Person, Ihrer Meinung nach, <span className='font-bold'>lächelt</span>.
@@ -61,7 +61,7 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({ imageId, numImages }) => 
                 setSelection(index)
               }}
               key={index}
-              className={`cursor-pointer ${index === selection ? 'border-4 border-[#e58253]' : ''}`}
+              className={`cursor-pointer ${index === selection ? 'border-4 border-goKiPrimary' : ''}`}
             />
           )
         })}
@@ -72,8 +72,8 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({ imageId, numImages }) => 
         }}
         className={`px-4 py-2 rounded mt-4 font-bold ${
           selection === -1
-            ? 'bg-[#e58253] border-4 border-[#965335] text-white'
-            : 'bg-white text-black opacity-70 hover:opacity-100 hover:ring-2 ring-[#e58253]'
+            ? 'bg-goKiPrimary border-4 border-goKiAccent text-white'
+            : 'bg-white text-black opacity-70 hover:opacity-100 hover:ring-2 ring-gobg-goKiPrimary'
         }`}
       >
         None is smiling

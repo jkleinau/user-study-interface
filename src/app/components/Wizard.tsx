@@ -23,16 +23,16 @@ const Wizard: React.FC<WizardProps> = ({ steps }) => {
 
   return (
     <div className='w-full h-screen'>
-      <div className='bg-[#d9fafb] w-full rounded-lg flex flex-col items-center p-8 h-5/6'>{steps[currentStep]}</div>
+      <div className='bg-goKiBG w-full rounded-lg flex flex-col items-center p-8 h-5/6'>{steps[currentStep]}</div>
       <div className='mt-2 flex justify-between'>
         <div className='mt-4 w-full h-2 bg-gray-200'>
-          <div className='h-full bg-[#e58253]' style={{ width: `${progress}%` }}></div> {/* Progress bar */}
+          <div className='h-full bg-goKiAccent' style={{ width: `${progress}%` }}></div> {/* Progress bar */}
         </div>
       </div>
       <div className='mt-2 flex justify-between'>
         {currentStep > 0 ? (
           <button
-            className='bg-[#e58253] hover:bg-[#965335] text-white font-bold py-2 px-4 rounded mr-2'
+            className='bg-goKiAccent hover:bg-[#965335] text-white font-bold py-2 px-4 rounded mr-2'
             onClick={prevStep}
           >
             Back
@@ -43,11 +43,11 @@ const Wizard: React.FC<WizardProps> = ({ steps }) => {
           </button>
         )}
         {currentStep < steps.length - 1 ? (
-          <button className='bg-[#e58253] hover:bg-[#965335] text-white font-bold py-2 px-4 rounded' onClick={nextStep}>
+          <button className='bg-goKiPrimary hover:bg-goKiPrimary text-white font-bold py-2 px-4 rounded' onClick={nextStep}>
             Next
           </button>
         ) : (
-          <button className='bg-[#e58253] text-white hover:bg-[#965335] font-bold py-2 px-4 rounded' onClick={()=>setCurrentStep(0)}>
+          <button className='bg-goKiPrimary text-white hover:bg-goKiPrimary font-bold py-2 px-4 rounded' onClick={()=>setCurrentStep(0)}>
             Zurück zum Anfang
           </button>
         )}

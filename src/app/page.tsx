@@ -25,7 +25,7 @@ export default function Home() {
   ]; // Added key prop
 
   return (
-    <main className='flex min-h-screen text-[#e58253] flex-col items-center justify-between p-20 bg-[#d9fafb]'>
+    <main className='flex min-h-screen text-goKiAccent flex-col items-center justify-between p-20 bg-goKiBG'>
         <Wizard steps={steps} />
     </main>
   );

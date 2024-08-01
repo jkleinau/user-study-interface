@@ -8,6 +8,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        'goKiBG': '#d9fafb',
+        'goKiAccent': '#e58253',
+        'goKiPrimary': '#217d80',
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

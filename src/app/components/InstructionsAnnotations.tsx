@@ -22,7 +22,7 @@ export default function InstructionsAnnotations() {
       <div className='grid grid-cols-3 my-auto space-x-2'>
         <Image src={ImageBefore} alt='Image Before' />
         <button
-          className='bg-[#e58253] border border-1 border-[#965335] text-white p-4 rounded-full'
+          className='bg-goKiAccent border border-1 border-[#965335] text-white p-4 rounded-full'
           onClick={handleButtonClick}
         >
           Generate Counterfactual

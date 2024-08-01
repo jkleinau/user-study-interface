@@ -3,7 +3,7 @@ const WelcomePage: React.FC = () => {
   return (
     <div className='mt-10 max-w-2xl h-full'>
       <div className='flex mb-4 items-center'>
-        <h1 className='text-2xl font-bold '>Kontrafaktische Erklärungen</h1>
+        <h1 className='text-2xl font-bold text-goKiPrimary '>Kontrafaktische Erklärungen</h1>
       </div>
       <p className='mb-4 text-xl'>
         Mit kontrafaktische Erklärungen versucht man die Verhaltensweisen eines Modells verständlich zu machen.{' '}

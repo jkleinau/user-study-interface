@@ -6,7 +6,7 @@ import ResultsAnnotation from '/public/27300_sel.png'
 export default function StudyResults(){
     return(
         <div className='selection:h-full mt-10 dark:text-black inline-block'>
-            <h1 className='text-2xl mx-auto mb-16 text-wrap max-w-2xl text-center'>Stimmen Sie mit der Erklärung überein?</h1>          
+            <h1 className='text-2xl mx-auto mb-16 text-wrap max-w-2xl text-center text-goKiPrimary'>Stimmen Sie mit der Erklärung überein?</h1>          
             <h1 className='text-xl mx-auto mb-16 text-wrap max-w-2xl text-center'>Hier sehen Sie wie Ihre eigene kontrafaktische Erklärung im Vergleich zu anderen Teilnehmenden und der XAI Methode abschneidet.</h1>          
             <div className="grid grid-cols-2">
                 <div>
