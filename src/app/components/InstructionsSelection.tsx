@@ -1,15 +1,7 @@
 import React from 'react';
+import Image from 'next/image';
+import Image1 from '/public/annotations/27300_1.0_misclassified.png';
 const SelectionToolExplanationPage: React.FC = () => {
-  const images = [
-    '/annotations/27300_1.0_misclassified.png',
-    '/annotations/27398_1.0_misclassified.png',
-    '/annotations/27591_1.0_misclassified.png',
-    '/annotations/27611_1.0_misclassified.png',
-    '/annotations/27931_1.0_misclassified.png',
-  ];
-
-  const randomIndex = Math.floor(Math.random() * images.length);
-  const randomImage = images[randomIndex];
 
   return (
     <div className="p-5 rounded-lg mt-10 max-w-2xl h-full dark:text-black">
@@ -17,7 +9,7 @@ const SelectionToolExplanationPage: React.FC = () => {
         Das Modell hat die Person im Bild als <span className='font-bold'>nicht lächelnd</span> klassifiziert. Was muss sich, Ihrer Meinung nach, verändern, dass die Person als <span className='font-bold'>lächelnd</span> klassifiziert werden kann?
       </p>
 
-      <img src={randomImage} alt={'Person nicht lächelnd'} width={300} height={300} className='mx-auto mb-4' />
+      <Image src={Image1} alt={'Person nicht lächelnd'} width={300} height={300} className='mx-auto mb-4' />
     </div>
   );
 };

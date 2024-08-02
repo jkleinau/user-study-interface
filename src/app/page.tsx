@@ -18,7 +18,6 @@ export default function Home() {
     <WelcomePage key={1} />,
     <SelectionToolExplanationPage key={2} />,
     <ImageSelector key={2} numImages={6} imageId={'27300'} />,
-    <ImageSelector key={2} numImages={4} imageId={'29762'} />,
     <ImageAnnotater key={3} imageUrl={Image1} prompt={''} />,
     <InstructionsAnnotations key={2} />,
     <StudyResults key={2} />,

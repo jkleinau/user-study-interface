@@ -44,7 +44,7 @@ const ImageSelector: React.FC<ImageSelectorProps> = ({ imageId, numImages }) => 
 
   return (
     <div className='flex p-8 rounded-lg  w-full dark:text-black items-center justify-center flex-col'>
-      <h1 className='text-xl  mb-16 text-center text-goKiPrimary'>
+      <h1 className='text-xl  mb-16 text-center '>
         Diese Bilderreihe zeigt ganz links das Originalbild. Die Bilder rechts davon sind AI generierte Bilder, in denen
         das Merkmal “<span className='font-bold'>Lächeln</span>” stufenweise intensiviert wurde. Wählen Sie, das von
         links aus, erste Bild in dem die Person, Ihrer Meinung nach, <span className='font-bold'>lächelt</span>.
